@@ -138,20 +138,23 @@ const rtcEvent = async (event, { logger, csClient }) => {
  * the only difference is that in every req, you will have a req.nexmo variable containning a nexmo context
  * 
  */
-const route =  (app) => {
-    app.get('/hello', async (req, res) => {
+ const route = (app, express) => {
+    const expressWs = require('express-ws')(app);
+    const WebSocket = require('ws');
+    
+    expressWs.getWss().on('connection', function (ws) {
+        console.log('Websocket connection is open');
+    });
 
-        const {
-            logger,
-        } = req.nexmo;
-
-        logger.info(`Hello Request HTTP `)
-
-        res.json({
-            text: "Hello Request!"
-        })
-    })
-}
+    // websocket middleware
+    app.ws('/socket', (ws, req) => {
+        ws.on('message', (msg) => {
+            setTimeout(() => {
+                m
+            }, 500); 
+        });
+    });
+};
 
 
 

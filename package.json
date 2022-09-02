@@ -9,6 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "conversation-api-function": "0.0.15"
+    "conversation-api-function": "0.0.15",
+    "dotenv": "^16.0.2",
+    "express-ws": "^5.0.2",
+    "revai-node-sdk": "^3.5.1",
+    "ws": "^8.8.1"
   }
 }
