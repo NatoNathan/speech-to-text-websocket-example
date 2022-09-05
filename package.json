@@ -2,9 +2,11 @@
   "name": "my-conv-api-fn",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "conversation-api-function run ."
+    "build": "tsc",
+    "start:logs": "conversation-api-function run dist | bunyan",
+    "start": "conversation-api-function run dist/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,5 +16,13 @@
     "express-ws": "^5.0.2",
     "revai-node-sdk": "^3.5.1",
     "ws": "^8.8.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/express-ws": "^3.0.1",
+    "@types/ws": "^8.5.3",
+    "express": "^4.18.1",
+    "tsc": "^2.0.4",
+    "typescript": "^4.8.2"
   }
 }
