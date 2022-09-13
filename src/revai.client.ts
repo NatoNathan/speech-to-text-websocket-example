@@ -1,9 +1,9 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
+import * as revai from 'revai-node-sdk';
 
-const revai = require('revai-node-sdk');
+dotenv.config();
 
-
-const REVAI_TOKEN=process.env.REVAI_TOKEN;
+const REVAI_TOKEN=process.env.REVAI_TOKEN ?? "";
 
 const audioConfig = new revai.AudioConfig(
     /* contentType */ "audio/x-raw",
@@ -13,7 +13,9 @@ const audioConfig = new revai.AudioConfig(
     /* channels */    1
 );
 
-var client = new revai.RevAiStreamingClient(REVAI_TOKEN, audioConfig);
+const client = new revai.RevAiStreamingClient(REVAI_TOKEN, audioConfig);
+
+export const apiClient = new revai.RevAiApiClient(REVAI_TOKEN);
 
 // Create your event responses
 client.on('close', (code, reason) => {
@@ -26,7 +28,8 @@ client.on('connectFailed', error => {
     console.log(`Connection failed with error: ${error}`);
 })
 client.on('connect', connectionMessage => {
-    console.log(`Connected with message: ${connectionMessage}`);
+    console.log(`Connected with message: ${connectionMessage.type}`);
 })
+ 
 
-module.exports = client;
+export default client;

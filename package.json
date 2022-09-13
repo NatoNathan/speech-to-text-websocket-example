@@ -5,8 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "start:logs": "conversation-api-function run dist | bunyan",
-    "start": "conversation-api-function run dist/index.js"
+    "build:dev": "tsc --watch",
+    "debug": "conversation-api-function run dist | bunyan",
+    "start": "conversation-api-function run dist"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "dotenv": "^16.0.2",
     "express-ws": "^5.0.2",
     "revai-node-sdk": "^3.5.1",
+    "websocket-stream": "^5.5.2",
     "ws": "^8.8.1"
   },
   "devDependencies": {

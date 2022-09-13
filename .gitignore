@@ -5,4 +5,4 @@ node_modules/*
 .env*
 .storageclient.dumb.json
 private.key
-dist/*
+dist/
